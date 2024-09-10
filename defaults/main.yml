@@ -31,7 +31,7 @@ containerlab_config_dir: '{{ output_dir }}/{{ containerlab_dir_name }}/{{ contai
 containerlab_configuration: containerlab.yml
 containerlab_mode: installed
 containerlab_labname: AVD
-containerlab_prefix: __lab-name  
+containerlab_prefix: '""'  
 containerlab_mgmt_network_name: MGMT
 containerlab_ceos_version: ceos:latest
 containerlab_vxlan_base: 100

@@ -56,7 +56,7 @@ topology:
 {%             endfor %}  
 {%         endif %}
       kind: ceos
-      startup-config: {{ inventory_hostname }}_{{ eos_config_dir_name }}/{{ fabric_switch }}.cfg
+      startup-config: {{ output_dir }}/{{ eos_config_dir_name }}/{{ fabric_switch }}.cfg
 {%         if containerlab_enforce_startup_config %}
       enforce-startup-config: true
 {%         endif %}
