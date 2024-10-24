@@ -41,4 +41,5 @@
   delegate_to: localhost
   template:
     src: containerlab_configuration.yml.j2
-    dest: "{{ containerlab_dir }}/{{ inventory_hostname }}_{{ containerlab_configuration }}"
+    # dest: "{{ containerlab_dir }}/{{ inventory_hostname }}_{{ containerlab_configuration }}"
+    dest: "{{ containerlab_dir }}/{{ containerlab_configuration }}"
