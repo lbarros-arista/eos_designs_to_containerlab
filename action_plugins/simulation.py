@@ -83,7 +83,7 @@ class ActionModule(ActionBase):
                         node_string += "      mgmt-ipv4: "+mgmt_ipv4+"\n"
                     
                     if (kind in ["ceos","veos"]):    
-                        node_string += "      startup-config: ../configs/"+node+".cfg\n"
+                        node_string += "      startup-config: "+os.getcwd()+"/intended/configs/"+node+".cfg\n"
                     
                     if containerlab_enforce_startup_config:
                         node_string += "      enforce-startup-config: true\n"
