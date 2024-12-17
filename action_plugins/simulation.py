@@ -63,8 +63,8 @@ class ActionModule(ActionBase):
                 node_string += "    "+ node + ":\n"
                 node_string += "      kind: "+kind+"\n"
                 node_string += "      image: "+image+"\n"
-                node_string += "      binds: \n"
-                node_string += "        ../../../cv-onboarding-token:/mnt/flash/cv-onboarding-token:ro\n"
+                # node_string += "      binds: \n"
+                # node_string += "        - "+os.getcwd()+"/clab/cv-onboarding-token:/mnt/flash/cv-onboarding-token:ro\n"
                 
                 if batch_count >= int(containerlab_deploy_startup_batches):
                     node_string += "      startup-delay: "+str((batch_count // int(containerlab_deploy_startup_batches)) * 300)+"\n"
@@ -95,10 +95,9 @@ class ActionModule(ActionBase):
                     if containerlab_custom_interface_mapping and node in inventory:
                         node_string += "        - "+distributed_node+"_mappings/"+node+".json:/mnt/flash/EosIntfMapping.json:ro\n"
                     if containerlab_onboard_to_cvp_token is not None:
-                        node_string += "        - "+distributed_node+"_containerlab_onboarding_token:/mnt/flash/token:ro\n"
+                        node_string += "        - "+os.getcwd()+"/clab/cv-onboarding-token:/mnt/flash/cv-onboarding-token:ro\n"
                     if containerlab_serial_sysmac and (kind in ["ceos","veos"]):
-                        if "serial_number" in hostvars[node] or ("metadata" in hostvars[node] and "system_mac_address" in hostvars[node]["metadata"]):
-                            node_string += "        - "+distributed_node+"_mappings/"+node+"_ceos_config:/mnt/flash/ceos-config:ro\n"
+                        node_string += "        - "+os.getcwd()+"/clab/sn/"+node+".txt:/mnt/flash/ceos-config:ro\n"
                     
                     if "containerlab" in hostvars[node]:
                         if "bind" in hostvars[node]["containerlab"]:
