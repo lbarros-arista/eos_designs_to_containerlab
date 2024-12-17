@@ -63,6 +63,8 @@ class ActionModule(ActionBase):
                 node_string += "    "+ node + ":\n"
                 node_string += "      kind: "+kind+"\n"
                 node_string += "      image: "+image+"\n"
+                node_string += "      binds: \n"
+                node_string += "        ../../../cv-onboarding-token:/mnt/flash/cv-onboarding-token:ro\n"
                 
                 if batch_count >= int(containerlab_deploy_startup_batches):
                     node_string += "      startup-delay: "+str((batch_count // int(containerlab_deploy_startup_batches)) * 300)+"\n"
